@@ -88,11 +88,7 @@ function wrapper() {
     };
 
     self.inBounds = function(portal) {
-        if (window.plugin.drawTools && window.plugin.drawTools.drawnItems.getLayers().length) {
-            return self.portalInDrawnItems(portal);
-        } else {
-            return self.portalInScreen(portal);
-        }
+        return self.portalInScreen(portal);
     };
 
     self.genStr = function genStr(title, image, lat, lng, portalGuid) {
@@ -153,6 +149,7 @@ function wrapper() {
         };
         for (var x in portals) {
             if (typeof window.portals[x] !== "undefined") {
+                if (window.portals[x].options.ent[2][10])
                 self.managePortals(obj, window.portals[x], x);
             }
         }
@@ -238,7 +235,7 @@ function wrapper() {
                         $('#scraperStatus').html('Area Scraped').css('color', 'green');
                     }
                 } else {
-                    current_area_scraped = false;
+                    window.current_area_scraped = false;
                     $('#scraperStatus').html('Waiting For Map Data').css('color', 'yellow');
                 }
             }
