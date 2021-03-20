@@ -149,7 +149,11 @@ function wrapper() {
         };
         for (var x in portals) {
             if (typeof window.portals[x] !== "undefined") {
-                if (window.portals[x].options.ent[2][10])
+                if (window.portals[x].options.ent[2][18]) {
+                if (window.portals[x].options.ent[2][18] == 1)
+                self.managePortals(obj, window.portals[x], x);
+                }
+                else
                 self.managePortals(obj, window.portals[x], x);
             }
         }
